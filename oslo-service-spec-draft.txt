@@ -165,19 +165,22 @@ Het kenmerk cva:geometry kan elk type van geografische informatie bevatten. De i
 
 Afhankelijk van de encoding van de geometrie, kunnen volgende types gebruikt worden
 Een string (WKT, GML, KML)
-Een klasse (OGC's - GeoSPARQL, GEOJSON specification)
+Een klasse (OGC's - GeoSPARQL, GEOJSON specification, Basic Geo (WGS84 lat/long) vocabulary)
 
 We adviseren om onderstaande te gebruiken:
 
-* Geometrie
+* Geometrie (punten, lijnen, polygonen, geometrie collecties)
 	* WKT
 	* GML
 	* RDF+WKT/GML
 	* GeoSPARQL and/or GEOJSON specification
 
-* Punten
+* Alleen punten
 	* RDF W3C Basic Geo (WGS84 lat/long)
 	* Of bovenstaande (geometrie)
+
+Om de interoperabiliteit van geografische informatie mogelijk te maken wordt voor WGS84 gekozen als standaard coördinaatreferentiesysteem om coördinaten uit te drukken. Andere coördinaatreferentiesystemen zijn mogelijk (Lambert72, ETRS89, ...) voor de gevallen waar een hogere precisie van de coördinaten noodzakelijk is.
+In het geval van RDF W3C Basic Geo wordt enkel WGS84 gebruikt. 
  
 --- 
  
@@ -200,7 +203,11 @@ RDF (WGS84 lat/long)
 RDF (schema.org)
 
 	:Resource locn:geometry [ a schema:GeoCoordinates; schema:latitude "51.477811"; schema:longitude "-0.001475" ] 	
-	
+
+JSON (GeoJSON)
+
+	"geometry": {"type": "Point","crs": "EPSG:4326","coordinates": [2.73626,50.85484]}
+
 ---
 	
 </section>
